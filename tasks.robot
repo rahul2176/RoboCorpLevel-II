@@ -41,17 +41,17 @@ Enter all Data from Excel
         Preview Robot
         Wait Until Element Is Visible    id:robot-preview-image
         Sleep    3 seconds
-        Screenshot    id:robot-preview-image    ${OUTPUT_DIR}${/}Task_Files${/}Robot_Screenshots${/}Robot_${order-reps}[Order number].png
+        Screenshot    id:robot-preview-image    ${CURDIR}${/}Task_Files${/}Robot_Screenshots${/}Robot_${order-reps}[Order number].png
         Click Button When Visible    order
         Check Order Button Clicked True
         Wait Until Element Is Visible    id:receipt
         Sleep    3 seconds
         ${order-receipt}=    Get Element Attribute    id:receipt    outerHTML
-        Html To Pdf    ${order-receipt}    ${OUTPUT_DIR}${/}Task_Files${/}HTML_Receipts${/}Receipt_${order-reps}[Order number].pdf
-        ${receipt-pdf}=    Open Pdf    ${OUTPUT_DIR}${/}Task_Files${/}HTML_Receipts${/}Receipt_${order-reps}[Order number].pdf
-        ${robo-png}=    Create List    ${OUTPUT_DIR}${/}Task_Files${/}HTML_Receipts${/}Receipt_${order-reps}[Order number].pdf
-        ...    ${OUTPUT_DIR}${/}Task_Files${/}Robot_Screenshots${/}Robot_${order-reps}[Order number].png
-        Add Files To Pdf    ${robo-png}    ${OUTPUT_DIR}${/}Task_Files${/}Embeded_PDFs${/}Receipt_${order-reps}[Order number].pdf
+        Html To Pdf    ${order-receipt}    ${CURDIR}${/}Task_Files${/}HTML_Receipts${/}Receipt_${order-reps}[Order number].pdf
+        ${receipt-pdf}=    Open Pdf    ${CURDIR}${/}Task_Files${/}HTML_Receipts${/}Receipt_${order-reps}[Order number].pdf
+        ${robo-png}=    Create List    ${CURDIR}${/}Task_Files${/}HTML_Receipts${/}Receipt_${order-reps}[Order number].pdf
+        ...    ${CURDIR}${/}Task_Files${/}Robot_Screenshots${/}Robot_${order-reps}[Order number].png
+        Add Files To Pdf    ${robo-png}    ${CURDIR}${/}Task_Files${/}Embeded_PDFs${/}Receipt_${order-reps}[Order number].pdf
         Go for Next Robot
     END
 
@@ -87,4 +87,4 @@ Go for Next Robot
     Popup Close
 
 Create Zip File
-    Archive Folder With Zip    ${OUTPUT_DIR}${/}Task_Files${/}Embeded_PDFs    Task_Files.zip    recursive=True
+    Archive Folder With Zip    ${CURDIR}${/}Task_Files${/}Embeded_PDFs    Task_Files.zip    recursive=True
